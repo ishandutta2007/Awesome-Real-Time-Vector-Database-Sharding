@@ -69,89 +69,89 @@ The following table provides a comprehensive overview of managed SaaS vector pla
 
 ## 🐙 Open-Source GitHub Projects
 
-This section catalogs leading open-source distributed vector databases, sharding frameworks, and ANN engines. Entries are **sorted descending by GitHub star count**, with real-time badges linking directly to each repository's stargazers page.
+This section catalogs leading open-source distributed vector databases, sharding frameworks, and ANN engines. Entries are **sorted descending by GitHub Stars_Count**, with real-time badges linking directly to each repository's stargazers page.
 
-### 1. [Milvus](https://github.com/milvus-io/milvus) [![GitHub stars](https://img.shields.io/github/stars/milvus-io/milvus?style=social&color=white)](https://github.com/milvus-io/milvus/stargazers)
+### 1. [Milvus](https://github.com/milvus-io/milvus) [![GitHub_Stars](https://img.shields.io/github/stars/milvus-io/milvus?style=social&color=white)](https://github.com/milvus-io/milvus/stargazers)
 - **Primary Language**: Go / C++
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: The industry-standard distributed vector database engineered for billion-scale vector workloads. Employs a cloud-native disaggregated design separating stateless compute coordinators (RootCoord, QueryCoord, DataCoord) from storage segments (S3/MinIO, etcd, Pulsar/Kafka write-ahead log). Features independent query node and data node scaling with automated segment compaction and shard rebalancing across Kubernetes clusters.
 
-### 2. [FAISS](https://github.com/facebookresearch/faiss) [![GitHub stars](https://img.shields.io/github/stars/facebookresearch/faiss?style=social&color=white)](https://github.com/facebookresearch/faiss/stargazers)
+### 2. [FAISS](https://github.com/facebookresearch/faiss) [![GitHub_Stars](https://img.shields.io/github/stars/facebookresearch/faiss?style=social&color=white)](https://github.com/facebookresearch/faiss/stargazers)
 - **Primary Language**: C++ / Python
 - **License**: MIT
 - **Sharding & Scaling Architecture**: Facebook AI Research's fundamental library for efficient similarity search and dense vector clustering. Offers state-of-the-art IVF, HNSW, PQ, and GPU-accelerated algorithms. Serves as the core indexing engine within distributed vector shard nodes across numerous enterprise database engines.
 
-### 3. [Qdrant](https://github.com/qdrant/qdrant) [![GitHub stars](https://img.shields.io/github/stars/qdrant/qdrant?style=social&color=white)](https://github.com/qdrant/qdrant/stargazers)
+### 3. [Qdrant](https://github.com/qdrant/qdrant) [![GitHub_Stars](https://img.shields.io/github/stars/qdrant/qdrant?style=social&color=white)](https://github.com/qdrant/qdrant/stargazers)
 - **Primary Language**: Rust
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: High-performance Rust-based vector search engine with native distributed clustering. Utilizes Raft consensus for cluster metadata, dynamic shard transfers between nodes without downtime, payload-based filtering, and hybrid dense/sparse vector search with sub-millisecond p99 latencies.
 
-### 4. [Chroma](https://github.com/chroma-core/chroma) [![GitHub stars](https://img.shields.io/github/stars/chroma-core/chroma?style=social&color=white)](https://github.com/chroma-core/chroma/stargazers)
+### 4. [Chroma](https://github.com/chroma-core/chroma) [![GitHub_Stars](https://img.shields.io/github/stars/chroma-core/chroma?style=social&color=white)](https://github.com/chroma-core/chroma/stargazers)
 - **Primary Language**: Python / Rust
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Developer-first open-source embedding database optimized for rapid RAG application iteration. Features a modular architecture supporting embedded local runtimes as well as distributed cloud-native segments backed by decoupled metadata catalogs and distributed log streams.
 
-### 5. [Typesense](https://github.com/typesense/typesense) [![GitHub stars](https://img.shields.io/github/stars/typesense/typesense?style=social&color=white)](https://github.com/typesense/typesense/stargazers)
+### 5. [Typesense](https://github.com/typesense/typesense) [![GitHub_Stars](https://img.shields.io/github/stars/typesense/typesense?style=social&color=white)](https://github.com/typesense/typesense/stargazers)
 - **Primary Language**: C++
 - **License**: GPL-3.0
 - **Sharding & Scaling Architecture**: Fast, typo-tolerant search engine with native vector search and hybrid search capabilities. Uses Raft-based distributed clustering for high availability and automated shard distribution, allowing seamless concurrent keyword and embedding queries.
 
-### 6. [pgvector](https://github.com/pgvector/pgvector) [![GitHub stars](https://img.shields.io/github/stars/pgvector/pgvector?style=social&color=white)](https://github.com/pgvector/pgvector/stargazers)
+### 6. [pgvector](https://github.com/pgvector/pgvector) [![GitHub_Stars](https://img.shields.io/github/stars/pgvector/pgvector?style=social&color=white)](https://github.com/pgvector/pgvector/stargazers)
 - **Primary Language**: C
 - **License**: PostgreSQL License
 - **Sharding & Scaling Architecture**: Open-source vector similarity search extension for PostgreSQL. Enables HNSW and IVFFlat indexing directly on relational tables. Scales horizontally when paired with PostgreSQL distributed clustering tools (such as Citus) or cloud-native distributed Postgres architectures.
 
-### 7. [Weaviate](https://github.com/weaviate/weaviate) [![GitHub stars](https://img.shields.io/github/stars/weaviate/weaviate?style=social&color=white)](https://github.com/weaviate/weaviate/stargazers)
+### 7. [Weaviate](https://github.com/weaviate/weaviate) [![GitHub_Stars](https://img.shields.io/github/stars/weaviate/weaviate?style=social&color=white)](https://github.com/weaviate/weaviate/stargazers)
 - **Primary Language**: Go
 - **License**: BSD-3-Clause
 - **Sharding & Scaling Architecture**: Open-source, cloud-native vector database with built-in multi-shard distribution. Operators configure dynamic shard and replica counts per collection; Weaviate automatically manages data partitioning, eventual consistency synchronization, and hybrid BM25 + dense vector ranking.
 
-### 8. [OpenSearch (k-NN)](https://github.com/opensearch-project/OpenSearch) [![GitHub stars](https://img.shields.io/github/stars/opensearch-project/OpenSearch?style=social&color=white)](https://github.com/opensearch-project/OpenSearch/stargazers)
+### 8. [OpenSearch (k-NN)](https://github.com/opensearch-project/OpenSearch) [![GitHub_Stars](https://img.shields.io/github/stars/opensearch-project/OpenSearch?style=social&color=white)](https://github.com/opensearch-project/OpenSearch/stargazers)
 - **Primary Language**: Java
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Distributed search engine featuring the native k-NN plugin powered by FAISS and NMSLIB. Vectors are partitioned across primary and replica shards across distributed cluster nodes, inheriting mature enterprise sharding, reindexing, and shard-routing mechanisms.
 
-### 9. [LanceDB](https://github.com/lancedb/lancedb) [![GitHub stars](https://img.shields.io/github/stars/lancedb/lancedb?style=social&color=white)](https://github.com/lancedb/lancedb/stargazers)
+### 9. [LanceDB](https://github.com/lancedb/lancedb) [![GitHub_Stars](https://img.shields.io/github/stars/lancedb/lancedb?style=social&color=white)](https://github.com/lancedb/lancedb/stargazers)
 - **Primary Language**: Rust
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Embedded and serverless vector database built on the columnar Lance data format. Decouples compute from persistent storage (S3/GCS/local NVMe), enabling zero-copy partition scans, fast vector indexing, and seamless integration with distributed compute frameworks like Apache Arrow and Ray.
 
-### 10. [Vespa](https://github.com/vespa-engine/vespa) [![GitHub stars](https://img.shields.io/github/stars/vespa-engine/vespa?style=social&color=white)](https://github.com/vespa-engine/vespa/stargazers)
+### 10. [Vespa](https://github.com/vespa-engine/vespa) [![GitHub_Stars](https://img.shields.io/github/stars/vespa-engine/vespa?style=social&color=white)](https://github.com/vespa-engine/vespa/stargazers)
 - **Primary Language**: C++ / Java
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Yahoo's battle-proven distributed search engine for vector, lexical, and structured search at billion-scale. Distributes data across stateful content clusters with automatic shard rebalancing, real-time index mutations, and multi-phase machine learning ranking.
 
-### 11. [Marqo](https://github.com/marqo-ai/marqo) [![GitHub stars](https://img.shields.io/github/stars/marqo-ai/marqo?style=social&color=white)](https://github.com/marqo-ai/marqo/stargazers)
+### 11. [Marqo](https://github.com/marqo-ai/marqo) [![GitHub_Stars](https://img.shields.io/github/stars/marqo-ai/marqo?style=social&color=white)](https://github.com/marqo-ai/marqo/stargazers)
 - **Primary Language**: Python
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: End-to-end multimodal vector search engine with native horizontal sharding. Handles document preprocessing, embedding inference, HNSW indexing, and distributed query execution across multi-node clusters.
 
-### 12. [Infinity](https://github.com/infiniflow/infinity) [![GitHub stars](https://img.shields.io/github/stars/infiniflow/infinity?style=social&color=white)](https://github.com/infiniflow/infinity/stargazers)
+### 12. [Infinity](https://github.com/infiniflow/infinity) [![GitHub_Stars](https://img.shields.io/github/stars/infiniflow/infinity?style=social&color=white)](https://github.com/infiniflow/infinity/stargazers)
 - **Primary Language**: C++
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: AI-native vector and full-text database built from scratch for LLM workflows. Offers sub-millisecond hybrid retrieval across dense vectors, sparse embeddings, and full-text queries with SIMD-accelerated execution and distributed clustering.
 
-### 13. [RuVector](https://github.com/ruvnet/RuVector) [![GitHub stars](https://img.shields.io/github/stars/ruvnet/RuVector?style=social&color=white)](https://github.com/ruvnet/RuVector/stargazers)
+### 13. [RuVector](https://github.com/ruvnet/RuVector) [![GitHub_Stars](https://img.shields.io/github/stars/ruvnet/RuVector?style=social&color=white)](https://github.com/ruvnet/RuVector/stargazers)
 - **Primary Language**: Rust / Python
 - **License**: MIT
 - **Sharding & Scaling Architecture**: High-speed vector engine featuring automatic sharding via consistent hashing, dynamic shard migration, Raft-based metadata consensus, multi-master replication, and hot/warm/cold memory tiering.
 
-### 14. [USearch](https://github.com/unum-cloud/usearch) [![GitHub stars](https://img.shields.io/github/stars/unum-cloud/usearch?style=social&color=white)](https://github.com/unum-cloud/usearch/stargazers)
+### 14. [USearch](https://github.com/unum-cloud/usearch) [![GitHub_Stars](https://img.shields.io/github/stars/unum-cloud/usearch?style=social&color=white)](https://github.com/unum-cloud/usearch/stargazers)
 - **Primary Language**: C++
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Compact and ultra-fast vector search library designed for native hardware acceleration (AVX-512, ARM NEON, FP16/INT8 quantization). Ideal as a high-density, low-overhead indexing engine embedded within custom distributed shard partitions.
 
-### 15. [pgvecto.rs](https://github.com/tensorchord/pgvecto.rs) [![GitHub stars](https://img.shields.io/github/stars/tensorchord/pgvecto.rs?style=social&color=white)](https://github.com/tensorchord/pgvecto.rs/stargazers)
+### 15. [pgvecto.rs](https://github.com/tensorchord/pgvecto.rs) [![GitHub_Stars](https://img.shields.io/github/stars/tensorchord/pgvecto.rs?style=social&color=white)](https://github.com/tensorchord/pgvecto.rs/stargazers)
 - **Primary Language**: Rust
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Scalable, high-performance vector search extension for PostgreSQL written entirely in Rust. Implements Vamana and HNSW graph indexes with asynchronous index construction, SIMD optimizations, and seamless compatibility with Postgres horizontal partitioning.
 
-### 16. [DiskANN](https://github.com/microsoft/DiskANN) [![GitHub stars](https://img.shields.io/github/stars/microsoft/DiskANN?style=social&color=white)](https://github.com/microsoft/DiskANN/stargazers)
+### 16. [DiskANN](https://github.com/microsoft/DiskANN) [![GitHub_Stars](https://img.shields.io/github/stars/microsoft/DiskANN?style=social&color=white)](https://github.com/microsoft/DiskANN/stargazers)
 - **Primary Language**: C++
 - **License**: MIT
 - **Sharding & Scaling Architecture**: Microsoft Research's graph-based approximate nearest neighbor search algorithm designed to query billions of vectors directly from SSDs/NVMe storage while keeping RAM usage minimal. Frequently integrated into distributed vector nodes to maximize vector density per machine.
 
-### 17. [Vald](https://github.com/vdaas/vald) [![GitHub stars](https://img.shields.io/github/stars/vdaas/vald?style=social&color=white)](https://github.com/vdaas/vald/stargazers)
+### 17. [Vald](https://github.com/vdaas/vald) [![GitHub_Stars](https://img.shields.io/github/stars/vdaas/vald?style=social&color=white)](https://github.com/vdaas/vald/stargazers)
 - **Primary Language**: Go
 - **License**: Apache 2.0
 - **Sharding & Scaling Architecture**: Cloud-native distributed ANN dense vector search engine built from the ground up for Kubernetes. Employs the NGT algorithm with autonomous indexing agents, dynamic horizontal pod autoscaling, and distributed ingress load balancing.
@@ -239,7 +239,7 @@ We welcome contributions from the community! To suggest a new SaaS product, open
 
 1. **Fork** this repository.
 2. **Create a branch**: `git checkout -b feature/add-new-sharding-engine`.
-3. **Add your entry** under the appropriate section in `README.md` (ensure factual descriptions, valid links, specific pricing/free limits for SaaS, or star badges for open source).
+3. **Add your entry** under the appropriate section in `README.md` (ensure factual descriptions, valid links, specific pricing/free limits for SaaS, or Stars_Badges for open source).
 4. **Submit a Pull Request** with a concise description of why the tool should be included.
 
 ---
