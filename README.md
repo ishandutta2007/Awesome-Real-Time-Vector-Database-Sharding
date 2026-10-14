@@ -1,6 +1,6 @@
 # Awesome-Real-Time-Vector-Database-Sharding
 
-# Top Real-Time Vector Database Sharding Ecosystem
+## Top Real-Time Vector Database Sharding Ecosystem
 
 **Curated List of SaaS Products & Open-Source GitHub Projects**  
 *Focused on Dynamic Scaling, High-Throughput Semantic Search & Enterprise Vector Sharding*  
