@@ -1,112 +1,257 @@
-# Awesome-Real-Time-Vector-Database-Sharding
+# Awesome Real-Time Vector Database Sharding ⚡
 
-## Top Real-Time Vector Database Sharding Ecosystem
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Real-Time Vector Database Sharding Banner" width="100%">
+</p>
 
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-*Focused on Dynamic Scaling, High-Throughput Semantic Search & Enterprise Vector Sharding*  
-**Last updated: March 2026**
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Real-Time Vector Database Sharding**. These tools enable vector databases to scale horizontally across multiple nodes — sharding embeddings, replicating for high availability, and rebalancing shards dynamically — to support billions of vectors with low-latency semantic search for RAG, recommendation, and AI applications.
-
-**Examples** include Pinecone, Qdrant, Milvus, Weaviate, Chroma, Vespa, Marqo, MyScale, Typesense, and Turbopuffer (the category leaders).
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, custom sharding strategies, and transparent distributed vector search — ideal for AI engineers prioritizing data sovereignty, developers building RAG infrastructure, and teams avoiding per-vector pricing.
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-## Table of Contents
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-- [Open-Source GitHub Projects](#open-source-github-projects)
-- [How to Contribute](#how-to-contribute)
-- [Disclaimer](#disclaimer)
-
-## SaaS/Hosted Platforms
-
-- **[Pinecone](https://www.pinecone.io/)**  
-  Fully managed, serverless vector database with automatic sharding and replication. Scales to billions of vectors without manual cluster configuration or node monitoring [citation:2]. Zero-ops model with REST API, making it the reference choice for teams prioritizing operational simplicity.
-
-- **[Qdrant Cloud](https://qdrant.tech/cloud/)**  
-  Managed version of Qdrant with distributed clusters, Raft-based consensus, zero-downtime scaling, and automatic failover [citation:5]. Optional GPU acceleration available. Enterprise-grade compliance and observability for production RAG workloads.
-
-- **[Zilliz Cloud (Milvus)](https://zilliz.com/)**  
-  Managed Milvus service with disaggregated cloud-native architecture. Separates stateless compute (coordinator, query, data nodes) from storage (S3/MinIO, etcd) [citation:16]. Built for billion-scale vector workloads with horizontal sharding.
-
-- **[Weaviate Cloud](https://weaviate.io/)**  
-  Managed Weaviate with built-in sharding and replication. Users configure shard and replica counts; Weaviate automatically manages data distribution [citation:12]. Prioritizes ease of deployment and high availability over fine-grained component control.
-
-- **[Vespa Cloud](https://vespa.ai/)**  
-  Managed version of Yahoo's Vespa engine with native vector search, lexical search (BM25), and structured data queries. Commercial open-source with strong hybrid search support [citation:18].
-
-- **[Marqo](https://www.marqo.ai/)**  
-  Tensor-based cloud-native search and analytics engine with sharding support and HNSW indexing [citation:18]. Focused on multimodal vector search for e-commerce and media.
-
-- **[MyScale](https://myscale.com/)**  
-  SQL-native vector database built on ClickHouse with vector search capabilities and sharding for analytics workloads.
-
-- **[Typesense](https://typesense.org/)**  
-  Typo-tolerant search engine with vector search support and distributed sharding for high-throughput semantic search.
-
-- **[Turbopuffer](https://turbopuffer.com/)**  
-  Serverless vector database built on object storage with automatic scaling and cost optimization through usage-based billing [citation:5].
-
-- **[Chroma Cloud](https://www.trychroma.com/)**  
-  Managed version of Chroma with serverless cloud architecture for moderate-scale deployments with high write throughput [citation:5].
-
-## Open-Source GitHub Projects
-
-- **[Milvus](https://github.com/milvus-io/milvus)**  
-  **The most mature open-source distributed vector database for billion-scale workloads.** Cloud-native architecture that separates stateless compute (coordinator, query nodes, data/streaming nodes) from storage (S3/MinIO for segments, etcd for metadata, write-ahead log) [citation:12][citation:16]. Features component-based scaling — scale data nodes independently from query nodes when indexing throughput bottlenecks emerge [citation:12]. QueryNodes are evenly distributed across physical nodes in Kubernetes clusters [citation:8]. Apache 2.0 licensed.
-
-- **[Qdrant](https://github.com/qdrant/qdrant)**  
-  **The leading open-source vector database for filter-heavy workloads under 50M vectors.** Rust-based with full clustering support, Raft-based consensus, horizontal sharding, and automatic failover [citation:5]. Supports payload-aware HNSW traversal, hybrid search (dense + sparse), pre-filtering for predicated queries, and sub-millisecond query latency [citation:5][citation:11]. Optional GPU acceleration. Apache 2.0 licensed.
-
-- **[Weaviate](https://github.com/weaviate/weaviate)**  
-  **Open-source vector database with first-class hybrid search.** Supports sharding and replicas for horizontal scaling — users configure shard and replica counts, and Weaviate manages data distribution automatically [citation:12]. Uses HNSW + LSM-Tree for vector index and inverted index over keywords and attributes [citation:11]. Eventual consistency model with BSD licensing [citation:18]. Pre-filtering for predicated search queries.
-
-- **[Chroma](https://github.com/chroma-core/chroma)**  
-  **Open-source vector database optimized for developer velocity and prototyping.** Uses HNSWlib and DuckDB, based on ClickHouse [citation:18]. Handles millions of vectors on a single node with sufficient RAM, but has **no built-in horizontal scaling** — migration to Qdrant, Milvus, or pgvector is required beyond single-machine capacity [citation:9]. Apache 2.0 licensed. Best for embedded applications and mid-scale deployments.
-
-- **[Vespa](https://github.com/vespa-engine/vespa)**  
-  **Yahoo's open-source engine for vector, lexical, and structured search.** Supports HNSW and BM25 with disk-backed and in-memory structures [citation:18]. Native hybrid search with strong support for rich filtering. Apache 2.0 licensed. Used in large-scale search and recommendation systems.
-
-- **[NodeDB](https://crates.io/crates/nodedb-bridge)**  
-  **Distributed hybrid database for multi-modal AI workloads.** Seven engines (Vector, Graph, Document, Columnar, Key-Value, Full-Text) in a single Rust binary sharing the same storage and query planner [citation:15]. Features HNSW with SQ8/PQ/IVF-PQ quantization, adaptive bitmap filtering, multi-Raft consensus, Thread-per-Core data plane with io_uring, and **automatic shard balancing** [citation:15]. Runs in Origin (server), Local, or embedded Lite (WASM) modes with identical application code.
-
-- **[RuVector](https://github.com/ruvnet/RuVector)**  
-  **Open-source vector database with GNN-enhanced search and auto-sharding.** Features **auto-sharding via consistent hashing** with shard migration, Raft consensus for metadata, and multi-master async replication with <100ms replication lag [citation:3][citation:6]. Tracks access patterns to automatically promote/demote vectors between hot/warm/cold tiers [citation:20]. Includes Cypher graph queries, hyperedges, 39 attention mechanisms, and 2-32x tensor compression. Claims 61µs p50 latency and 1M vectors/min parallel HNSW construction [citation:20]. MIT licensed.
-
-- **[pgvector](https://github.com/pgvector/pgvector)**  
-  **Open-source vector similarity search for PostgreSQL.** Adds vector indexing and ANN search to existing Postgres deployments, inheriting backups, replication, monitoring, and access control for free [citation:14]. Handles <1M vectors effectively; beyond that, dedicated engines are recommended [citation:14]. Best for teams already operating PostgreSQL who want one fewer system to manage.
-
-- **[Vald](https://github.com/vdaas/vald)**  
-  **Cloud-native distributed approximate nearest neighbor (ANN) dense vector search engine** from Yahoo Japan [citation:18]. Uses NGT (Neighborhood Graph and Tree) for vector search with distributed indexing and asynchronous indexing support. Apache 2.0 licensed.
-
-### Additional Strong Open-Source Options
-
-- **[VecGrid](https://pypi.org/project/vecgrid/)** — Distributed HNSW with partitioned graphs (default 271 partitions by consistent hashing of vector ID). Scatter-gather search across all partitions with coordinator merging partial results [citation:1]. Achieves 95-98% recall@10 at 1M vectors. Counterintuitively improves recall for small-to-medium datasets because each partition's graph is denser [citation:1].
-- **[HAKES](https://arxiv.org/abs/2505.12524)** — Hybrid ANN with key-enabled sharding for distributed vector databases. Achieves 0.98 recall for k=10 [citation:8].
-- **[LanceDB](https://github.com/lancedb/lancedb)** — Embedded vector database for local prototyping and multimodal applications [citation:19].
-- **FAISS** — Facebook's library for efficient similarity search and clustering. Single-node only; sharding must be implemented manually [citation:13].
-- **DiskANN (Milvus)** — Disk-backed index for billion-scale vectors, reducing memory footprint compared to in-memory HNSW [citation:14].
-
-**Frameworks for building custom systems**: Combine **Milvus** for billion-scale disaggregated architecture, **Qdrant** for filter-heavy workloads under 50M vectors, **Weaviate** for first-class hybrid search, **VecGrid** or **RuVector** for partitioned HNSW with scatter-gather or GNN-enhanced search, and **pgvector** for existing PostgreSQL teams to build a complete self-hosted vector sharding stack.
-
-## How to Contribute
-
-1. Fork the repo.
-2. Add/edit entries in `README.md` (follow existing format).
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-4. Submit PR with a short explanation.
-
-Star the repo if you find it useful!
-
-## Disclaimer
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-- Vector database sharding tools must comply with data protection regulations (GDPR, CCPA), industry standards (SOC 2), and organizational data governance requirements. Recall and latency benchmarks are workload-dependent and should be validated against your specific data distribution and query patterns.
-- Self-hosted open-source solutions require proper Kubernetes orchestration, high-IOPS persistent storage (AWS io2/local NVMe), memory budgeting for HNSW graphs, and ongoing monitoring [citation:16].
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding?style=flat-square&logo=github&color=gold" alt="Repo Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding?style=flat-square&logo=github" alt="Repo Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
 ---
 
-**Made for AI engineers, RAG developers, platform teams, and developers building high-throughput semantic search infrastructure.**  
-Let's make real-time vector database sharding more open, scalable, and data-sovereign.
+## 📌 Executive Summary & Introduction
+
+Welcome to the definitive curated directory for **Real-Time Vector Database Sharding**, high-throughput distributed Approximate Nearest Neighbor (ANN) search, and enterprise-grade vector infrastructure.
+
+As modern Generative AI, Retrieval-Augmented Generation (RAG), and agentic workflows expand from millions to **billions of high-dimensional embeddings**, single-node in-memory vector databases hit insurmountable memory and latency ceilings. **Real-time vector database sharding** solves this bottleneck by distributing vector embeddings, HNSW/IVF graphs, and inverted keyword indexes across clustered compute and storage nodes with low latency, Raft consensus, dynamic shard rebalancing, and high-availability replica routing.
+
+This repository tracks production-proven **SaaS Platforms** and battle-tested **Open-Source GitHub Projects** engineered to provide horizontal scalability, sub-millisecond query latencies, and high write throughput for mission-critical AI applications.
+
+---
+
+## 📑 Table of Contents
+
+- [📊 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [☁️ SaaS / Managed Cloud Platforms](#️-saas--managed-cloud-platforms)
+- [🐙 Open-Source GitHub Projects](#-open-source-github-projects)
+- [🧩 Algorithmic Frameworks & Custom Sharding](#-algorithmic-frameworks--custom-sharding)
+- [🏗️ Architectural Reference Patterns](#️-architectural-reference-patterns)
+- [⭐ Star History](#-star-history)
+- [💖 Support & Sponsoring](#-support--sponsoring)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [📜 Disclaimer](#-disclaimer)
+
+---
+
+## 📊 Sector Overview & Market Dynamics
+
+The global vector database and real-time distributed vector search market was valued at approximately **$1.8 billion in 2025** and is projected to expand to **over $8.5 billion by 2030**, growing at a staggering CAGR of ~36% fueled by widespread enterprise RAG (Retrieval-Augmented Generation), multimodal AI systems, and agentic memory architectures. 
+
+The sector exhibits **moderate fragmentation with emergent concentration around ecosystem pillars** — while pioneering specialized engines (Pinecone, Milvus, Qdrant, Weaviate) capture substantial developer mindshare and high-throughput production workloads, full-text and relational stalwarts (PostgreSQL/pgvector, Elasticsearch, ClickHouse) continue capturing hybrid deployments, preventing a strictly "winner-take-all" outcome and driving intense competition across dynamic shard rebalancing and low-latency distributed ANN recall.
+
+---
+
+## ☁️ SaaS / Managed Cloud Platforms
+
+The following table provides a comprehensive overview of managed SaaS vector platforms featuring horizontal sharding, dynamic partition allocation, and serverless scalability. Entries are **sorted descending by company valuation / scale**.
+
+| Platform | Company Valuation / Revenue | Starting Tier Pricing | Free Tier Limits / Trial | Sharding & Real-Time Distributed Architecture |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Pinecone](https://www.pinecone.io/)** | **$750M Valuation** (Series B, a16z; ~$35M+ ARR) | **$0.33 per 1M write units / $0.10 per 1M read units** + $0.25/GB-mo storage (Serverless pay-as-you-go) or Standard Pods from **$0.04/hour (~$29.00/mo)** | **Starter Plan (Free Forever)**: 1 project, 5 serverless indexes, up to 2 GB storage (~100,000 vectors with 768 dimensions), 100K read/write units/month; no credit card required | Decoupled compute and blob storage architecture with automatic background shard splitting, instant scaling, and multi-AZ replica consistency. |
+| **[Zilliz Cloud (Milvus)](https://zilliz.com/)** | **$600M Valuation** ($113M raised; Series B+ led by Prosperity7) | **$0.05 per 1M read query units & $0.05/GB-mo** (Serverless) or Dedicated CU instances from **$0.088/hour (~$65.00/mo per CU)** | **Free Forever Tier**: 2 collections, 1 CU capacity (~1M vectors, 5GB storage); plus **$100 in free trial credits for 30 days** on enterprise clusters | Disaggregated cloud-native Milvus topology; stateless query/data coordinators partitioned across multi-node Kubernetes clusters with S3/MinIO segment storage. |
+| **[Weaviate Cloud](https://weaviate.io/)** | **$200M Valuation** ($67M raised; Series B led by Index Ventures) | **$0.0175 per 1K query requests + $0.00014 per 1K vector dimensions/month** (Serverless) or Dedicated Clusters from **$25.00/month** | **Free Forever Tier**: Includes **$10 recurring monthly usage credits** on Serverless; plus a **14-day free Sandbox cluster** (up to 500K vectors, no credit card required) | Horizontal multi-shard distribution with configurable shard count and replica sets, gossip-based cluster coordination, and automatic distributed rebalancing. |
+| **[Qdrant Cloud](https://qdrant.tech/cloud/)** | **$175M Valuation** ($38M raised; Series A led by Spark Capital) | **$0.0125/hour (~$9.00/month)** for a 0.5 vCPU, 1 GB RAM cluster (Dedicated Cloud) | **Free Forever Cluster**: 1 cluster with 0.5 vCPU, 1 GB RAM, up to ~150K 768-dim vectors, full REST/gRPC API; no credit card required | Rust-native distributed architecture using Raft consensus for topology state, peer-to-peer shard transfers, dynamic partition splitting, and payload-aware filtering. |
+| **[Vespa Cloud](https://vespa.ai/)** | **$120M Valuation** ($31M raised; Series A led by Blossom Capital) | **$0.014/CPU core-hour + $0.0019/GB-RAM hour** (minimal dev cluster starts at **~$29.00/month**) | **Free 30-day trial** with **$300 in free cloud credits** to evaluate multi-node clusters and real-time hybrid vector search | Enterprise cluster architecture supporting millions of queries per second, stateful multi-tier storage grouping, and native HNSW + BM25 hybrid sharding. |
+| **[Chroma Cloud](https://www.trychroma.com/)** | **$75M Valuation** ($20M raised; Seed led by Quiet Capital) | **$0.10 per 1M write units + $0.05 per 1M read units**; baseline production cluster starts at **$10.00/month** | **Free Forever Plan**: 1 GB storage, up to 1M vectors, 10M API requests/month included with full client support; no credit card required | Serverless distributed log architecture using decoupled metadata queries, cloud-native tenant isolation, and managed auto-scaling endpoints. |
+| **[Marqo Cloud](https://www.marqo.ai/)** | **$55M Valuation** ($17.8M raised; Series A led by Lightspeed) | Entry-level dedicated inference and search worker node starting at **$0.03/hour (~$21.60/month)** | **Free 14-day trial** with **$50 in trial compute and storage credits** for multimodal vector embedding and search | Cloud-native tensor search with horizontal shard replication, asynchronous vector index construction, and multi-modal tensor sharding. |
+| **[Turbopuffer](https://turbopuffer.com/)** | **$25M Valuation** ($11M raised; Seed/Series A led by Peak XV) | **$0.000000003 per vector dimension queried** (~$3.00 per 1B vector dimensions searched) + **$0.02/GB storage/month** | **Free Forever Tier**: 100M free vector dimensions searched per month and up to 1 GB cloud storage free | Object-storage-backed vector search engine using stateless ephemeral compute nodes and distributed partitioning directly over cloud blob stores. |
+| **[MyScale](https://myscale.com/)** | **$18M Valuation** (Seed stage; MoInternal) | **$0.068/hour (~$49.00/month)** for a Standard Pod (2 vCPUs, 8 GB RAM) | **Free Developer Pod (Free Forever)**: 1 pod with up to 5M 768-dim vectors storage; or 30-day enterprise evaluation trial | Distributed SQL vector database built atop ClickHouse with MSTG vector index algorithm, high-throughput column-oriented sharding, and real-time streaming ingestion. |
+| **[Typesense Cloud](https://typesense.org/)** | **$15M Valuation** (Bootstrapped / ~$3.5M ARR) | Dedicated cluster starting at **$0.025/hour (~$18.00/month)** for a 0.5 vCPU, 1 GB RAM high-performance node | **Free 30-day trial** with **$50 in free cloud credits** to deploy single-node or multi-node distributed clusters | Raft-based distributed clustering, typo-tolerant keyword + vector hybrid sharding, and sub-50ms distributed search execution. |
+
+---
+
+## 🐙 Open-Source GitHub Projects
+
+This section catalogs leading open-source distributed vector databases, sharding frameworks, and ANN engines. Entries are **sorted descending by GitHub star count**, with real-time badges linking directly to each repository's stargazers page.
+
+### 1. [Milvus](https://github.com/milvus-io/milvus) [![GitHub stars](https://img.shields.io/github/stars/milvus-io/milvus?style=social&color=white)](https://github.com/milvus-io/milvus/stargazers)
+- **Primary Language**: Go / C++
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: The industry-standard distributed vector database engineered for billion-scale vector workloads. Employs a cloud-native disaggregated design separating stateless compute coordinators (RootCoord, QueryCoord, DataCoord) from storage segments (S3/MinIO, etcd, Pulsar/Kafka write-ahead log). Features independent query node and data node scaling with automated segment compaction and shard rebalancing across Kubernetes clusters.
+
+### 2. [FAISS](https://github.com/facebookresearch/faiss) [![GitHub stars](https://img.shields.io/github/stars/facebookresearch/faiss?style=social&color=white)](https://github.com/facebookresearch/faiss/stargazers)
+- **Primary Language**: C++ / Python
+- **License**: MIT
+- **Sharding & Scaling Architecture**: Facebook AI Research's fundamental library for efficient similarity search and dense vector clustering. Offers state-of-the-art IVF, HNSW, PQ, and GPU-accelerated algorithms. Serves as the core indexing engine within distributed vector shard nodes across numerous enterprise database engines.
+
+### 3. [Qdrant](https://github.com/qdrant/qdrant) [![GitHub stars](https://img.shields.io/github/stars/qdrant/qdrant?style=social&color=white)](https://github.com/qdrant/qdrant/stargazers)
+- **Primary Language**: Rust
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: High-performance Rust-based vector search engine with native distributed clustering. Utilizes Raft consensus for cluster metadata, dynamic shard transfers between nodes without downtime, payload-based filtering, and hybrid dense/sparse vector search with sub-millisecond p99 latencies.
+
+### 4. [Chroma](https://github.com/chroma-core/chroma) [![GitHub stars](https://img.shields.io/github/stars/chroma-core/chroma?style=social&color=white)](https://github.com/chroma-core/chroma/stargazers)
+- **Primary Language**: Python / Rust
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Developer-first open-source embedding database optimized for rapid RAG application iteration. Features a modular architecture supporting embedded local runtimes as well as distributed cloud-native segments backed by decoupled metadata catalogs and distributed log streams.
+
+### 5. [Typesense](https://github.com/typesense/typesense) [![GitHub stars](https://img.shields.io/github/stars/typesense/typesense?style=social&color=white)](https://github.com/typesense/typesense/stargazers)
+- **Primary Language**: C++
+- **License**: GPL-3.0
+- **Sharding & Scaling Architecture**: Fast, typo-tolerant search engine with native vector search and hybrid search capabilities. Uses Raft-based distributed clustering for high availability and automated shard distribution, allowing seamless concurrent keyword and embedding queries.
+
+### 6. [pgvector](https://github.com/pgvector/pgvector) [![GitHub stars](https://img.shields.io/github/stars/pgvector/pgvector?style=social&color=white)](https://github.com/pgvector/pgvector/stargazers)
+- **Primary Language**: C
+- **License**: PostgreSQL License
+- **Sharding & Scaling Architecture**: Open-source vector similarity search extension for PostgreSQL. Enables HNSW and IVFFlat indexing directly on relational tables. Scales horizontally when paired with PostgreSQL distributed clustering tools (such as Citus) or cloud-native distributed Postgres architectures.
+
+### 7. [Weaviate](https://github.com/weaviate/weaviate) [![GitHub stars](https://img.shields.io/github/stars/weaviate/weaviate?style=social&color=white)](https://github.com/weaviate/weaviate/stargazers)
+- **Primary Language**: Go
+- **License**: BSD-3-Clause
+- **Sharding & Scaling Architecture**: Open-source, cloud-native vector database with built-in multi-shard distribution. Operators configure dynamic shard and replica counts per collection; Weaviate automatically manages data partitioning, eventual consistency synchronization, and hybrid BM25 + dense vector ranking.
+
+### 8. [OpenSearch (k-NN)](https://github.com/opensearch-project/OpenSearch) [![GitHub stars](https://img.shields.io/github/stars/opensearch-project/OpenSearch?style=social&color=white)](https://github.com/opensearch-project/OpenSearch/stargazers)
+- **Primary Language**: Java
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Distributed search engine featuring the native k-NN plugin powered by FAISS and NMSLIB. Vectors are partitioned across primary and replica shards across distributed cluster nodes, inheriting mature enterprise sharding, reindexing, and shard-routing mechanisms.
+
+### 9. [LanceDB](https://github.com/lancedb/lancedb) [![GitHub stars](https://img.shields.io/github/stars/lancedb/lancedb?style=social&color=white)](https://github.com/lancedb/lancedb/stargazers)
+- **Primary Language**: Rust
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Embedded and serverless vector database built on the columnar Lance data format. Decouples compute from persistent storage (S3/GCS/local NVMe), enabling zero-copy partition scans, fast vector indexing, and seamless integration with distributed compute frameworks like Apache Arrow and Ray.
+
+### 10. [Vespa](https://github.com/vespa-engine/vespa) [![GitHub stars](https://img.shields.io/github/stars/vespa-engine/vespa?style=social&color=white)](https://github.com/vespa-engine/vespa/stargazers)
+- **Primary Language**: C++ / Java
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Yahoo's battle-proven distributed search engine for vector, lexical, and structured search at billion-scale. Distributes data across stateful content clusters with automatic shard rebalancing, real-time index mutations, and multi-phase machine learning ranking.
+
+### 11. [Marqo](https://github.com/marqo-ai/marqo) [![GitHub stars](https://img.shields.io/github/stars/marqo-ai/marqo?style=social&color=white)](https://github.com/marqo-ai/marqo/stargazers)
+- **Primary Language**: Python
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: End-to-end multimodal vector search engine with native horizontal sharding. Handles document preprocessing, embedding inference, HNSW indexing, and distributed query execution across multi-node clusters.
+
+### 12. [Infinity](https://github.com/infiniflow/infinity) [![GitHub stars](https://img.shields.io/github/stars/infiniflow/infinity?style=social&color=white)](https://github.com/infiniflow/infinity/stargazers)
+- **Primary Language**: C++
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: AI-native vector and full-text database built from scratch for LLM workflows. Offers sub-millisecond hybrid retrieval across dense vectors, sparse embeddings, and full-text queries with SIMD-accelerated execution and distributed clustering.
+
+### 13. [RuVector](https://github.com/ruvnet/RuVector) [![GitHub stars](https://img.shields.io/github/stars/ruvnet/RuVector?style=social&color=white)](https://github.com/ruvnet/RuVector/stargazers)
+- **Primary Language**: Rust / Python
+- **License**: MIT
+- **Sharding & Scaling Architecture**: High-speed vector engine featuring automatic sharding via consistent hashing, dynamic shard migration, Raft-based metadata consensus, multi-master replication, and hot/warm/cold memory tiering.
+
+### 14. [USearch](https://github.com/unum-cloud/usearch) [![GitHub stars](https://img.shields.io/github/stars/unum-cloud/usearch?style=social&color=white)](https://github.com/unum-cloud/usearch/stargazers)
+- **Primary Language**: C++
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Compact and ultra-fast vector search library designed for native hardware acceleration (AVX-512, ARM NEON, FP16/INT8 quantization). Ideal as a high-density, low-overhead indexing engine embedded within custom distributed shard partitions.
+
+### 15. [pgvecto.rs](https://github.com/tensorchord/pgvecto.rs) [![GitHub stars](https://img.shields.io/github/stars/tensorchord/pgvecto.rs?style=social&color=white)](https://github.com/tensorchord/pgvecto.rs/stargazers)
+- **Primary Language**: Rust
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Scalable, high-performance vector search extension for PostgreSQL written entirely in Rust. Implements Vamana and HNSW graph indexes with asynchronous index construction, SIMD optimizations, and seamless compatibility with Postgres horizontal partitioning.
+
+### 16. [DiskANN](https://github.com/microsoft/DiskANN) [![GitHub stars](https://img.shields.io/github/stars/microsoft/DiskANN?style=social&color=white)](https://github.com/microsoft/DiskANN/stargazers)
+- **Primary Language**: C++
+- **License**: MIT
+- **Sharding & Scaling Architecture**: Microsoft Research's graph-based approximate nearest neighbor search algorithm designed to query billions of vectors directly from SSDs/NVMe storage while keeping RAM usage minimal. Frequently integrated into distributed vector nodes to maximize vector density per machine.
+
+### 17. [Vald](https://github.com/vdaas/vald) [![GitHub stars](https://img.shields.io/github/stars/vdaas/vald?style=social&color=white)](https://github.com/vdaas/vald/stargazers)
+- **Primary Language**: Go
+- **License**: Apache 2.0
+- **Sharding & Scaling Architecture**: Cloud-native distributed ANN dense vector search engine built from the ground up for Kubernetes. Employs the NGT algorithm with autonomous indexing agents, dynamic horizontal pod autoscaling, and distributed ingress load balancing.
+
+---
+
+## 🧩 Algorithmic Frameworks & Custom Sharding
+
+For engineering teams constructing proprietary distributed vector topologies or custom scatter-gather architectures:
+
+- **[VecGrid](https://pypi.org/project/vecgrid/)**: Distributed HNSW framework utilizing partitioned graphs (default 271 partitions via consistent hashing of vector IDs). Uses scatter-gather queries with coordinator merging to maintain 95–98% recall@10 at multi-million scale.
+- **[HAKES](https://arxiv.org/abs/2505.12524)**: Hybrid Approximate Nearest Neighbor with Key-Enabled Sharding for distributed vector databases, achieving up to 0.98 recall for top-k retrieval across sharded clusters.
+- **[NodeDB](https://crates.io/crates/nodedb-bridge)**: Distributed multi-modal database in Rust combining Vector, Graph, Columnar, and Key-Value engines with multi-Raft consensus, Thread-per-Core io_uring data planes, and automatic shard balancing.
+
+---
+
+## 🏗️ Architectural Reference Patterns
+
+When designing a production-grade real-time vector sharding pipeline, consider the following best practices:
+
+```mermaid
+flowchart TD
+    Client["Client / Agent / RAG Pipeline"] --> Ingress["Ingress Coordinator / Router"]
+    Ingress --> PartitionMgr["Consistent Hashing / Shard Router"]
+    
+    subgraph ShardCluster["Distributed Vector Shard Cluster"]
+        direction TB
+        subgraph Shard1["Shard Partition 1"]
+            Node1A["Primary Node (R/W)"] --- Node1B["Replica Node (Read-Only)"]
+            Index1["HNSW / IVF-PQ Index"]
+        end
+        subgraph Shard2["Shard Partition 2"]
+            Node2A["Primary Node (R/W)"] --- Node2B["Replica Node (Read-Only)"]
+            Index2["HNSW / IVF-PQ Index"]
+        end
+        subgraph ShardN["Shard Partition N"]
+            NodeNA["Primary Node (R/W)"] --- NodeNB["Replica Node (Read-Only)"]
+            IndexN["HNSW / IVF-PQ Index"]
+        end
+    end
+
+    PartitionMgr --> Shard1
+    PartitionMgr --> Shard2
+    PartitionMgr --> ShardN
+
+    subgraph Consensus["Coordination & Consensus Layer"]
+        Raft["Raft / Gossip Metadata Coordinator"]
+        WAL["Distributed WAL / Object Store (S3/MinIO)"]
+    end
+
+    ShardCluster -.-> Consensus
+```
+
+1. **Scatter-Gather vs. Directed Routing**:
+   - For high-dimensional embeddings without metadata filters, queries are scattered to all primary shards and partial results are merged by the coordinator.
+   - For multi-tenant or categorical workloads, partition keys (e.g. `tenant_id` or `workspace_id`) route queries directly to target shards, drastically reducing cluster network overhead.
+2. **Dynamic Shard Splitting & Rebalancing**:
+   - Implement consistent hashing rings with virtual nodes to avoid massive reindexing cascades when adding capacity.
+   - Hot/cold tiering (e.g., in-memory HNSW for recent vectors, DiskANN/SSD-backed indexes for cold vectors) reduces memory expenses by up to 80%.
+3. **Consensus & High Availability**:
+   - Decouple cluster metadata consensus (Raft/etcd) from vector ingestion pipelines (WAL / Pulsar / Kafka) to maintain 99.99% availability during shard failovers.
+
+---
+
+## ⭐ Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Real-Time-Vector-Database-Sharding&type=date&legend=top-left)
+
+---
+
+## 💖 Support & Sponsoring
+
+Thank you for visiting and using **Awesome Real-Time Vector Database Sharding**! If this curated guide helped you navigate distributed vector indexing, RAG system scaling, or choosing the best sharding engine for your workloads:
+
+- ⭐ **Star this repository** to show your appreciation and help more developers discover it.
+- 🍴 **Fork and contribute** by submitting PRs with new projects, benchmarks, and architectural insights.
+- 📢 **Share** with your engineering team, AI research group, and developer networks.
+- ☕ **Sponsor & Buy a Coffee**: Support maintenance and updates directly via the [GitHub Sponsors Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 🤝 How to Contribute
+
+We welcome contributions from the community! To suggest a new SaaS product, open-source project, or architectural enhancement:
+
+1. **Fork** this repository.
+2. **Create a branch**: `git checkout -b feature/add-new-sharding-engine`.
+3. **Add your entry** under the appropriate section in `README.md` (ensure factual descriptions, valid links, specific pricing/free limits for SaaS, or star badges for open source).
+4. **Submit a Pull Request** with a concise description of why the tool should be included.
+
+---
+
+## 📜 Disclaimer
+
+- This list is **community-curated** for educational, architectural, and evaluation purposes; inclusion does not constitute an endorsement.
+- All product names, logos, and brands are property of their respective owners.
+- Real-time recall, latency, and throughput numbers are highly dependent on dimensionality, distance metrics, quantization methods, and hardware infrastructure. Always benchmark with your application's actual data distribution.
+
+---
+
+<p align="center">
+  <b>Built with ❤️ for AI Engineers, Distributed Systems Architects, and High-Throughput RAG Developers.</b>
+</p>

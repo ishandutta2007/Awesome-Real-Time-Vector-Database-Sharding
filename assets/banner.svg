@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <linearGradient id="neonEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <!-- Radial Glows -->
+    <radialGradient id="glowCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="cyberGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.6" />
+      <circle cx="40" cy="0" r="1.2" fill="#38bdf8" fill-opacity="0.3" />
+    </pattern>
+
+    <style>
+      .glow-pulse-1 {
+        animation: pulse1 5s ease-in-out infinite alternate;
+      }
+      .glow-pulse-2 {
+        animation: pulse2 6s ease-in-out infinite alternate;
+      }
+      .flow-path {
+        stroke-dasharray: 8, 12;
+        animation: dashFlow 15s linear infinite;
+      }
+      .flow-path-reverse {
+        stroke-dasharray: 6, 10;
+        animation: dashFlowReverse 12s linear infinite;
+      }
+      .float-node-1 {
+        animation: float1 4s ease-in-out infinite alternate;
+      }
+      .float-node-2 {
+        animation: float2 5s ease-in-out infinite alternate;
+      }
+      .float-node-3 {
+        animation: float3 4.5s ease-in-out infinite alternate;
+      }
+      .pulse-ring {
+        animation: ringPulse 3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+        transform-origin: center;
+      }
+      .beacon-dot {
+        animation: beaconGlow 2s ease-in-out infinite alternate;
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -200; }
+      }
+      @keyframes dashFlowReverse {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: 200; }
+      }
+      @keyframes pulse1 {
+        0% { transform: scale(0.9); opacity: 0.3; }
+        100% { transform: scale(1.15); opacity: 0.65; }
+      }
+      @keyframes pulse2 {
+        0% { transform: scale(1); opacity: 0.25; }
+        100% { transform: scale(1.25); opacity: 0.55; }
+      }
+      @keyframes float1 {
+        0% { transform: translateY(0px) rotate(0deg); }
+        100% { transform: translateY(-10px) rotate(2deg); }
+      }
+      @keyframes float2 {
+        0% { transform: translateY(0px) rotate(0deg); }
+        100% { transform: translateY(12px) rotate(-2deg); }
+      }
+      @keyframes float3 {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-8px); }
+      }
+      @keyframes ringPulse {
+        0% { r: 16px; opacity: 0.8; }
+        100% { r: 36px; opacity: 0; }
+      }
+      @keyframes beaconGlow {
+        0% { opacity: 0.4; filter: drop-shadow(0 0 2px #06b6d4); }
+        100% { opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); }
+      }
+    </style>
+  </defs>
+
+  <!-- Base Canvas Background -->
+  <rect width="1200" height="420" fill="url(#bgGradient)" rx="16" />
+
+  <!-- Animated Background Glow Orbs (Behind Grid) -->
+  <g transform="translate(180, 140)">
+    <circle cx="0" cy="0" r="160" fill="url(#glowCyan)" class="glow-pulse-1" />
+  </g>
+  <g transform="translate(1020, 260)">
+    <circle cx="0" cy="0" r="180" fill="url(#glowPurple)" class="glow-pulse-2" />
+  </g>
+
+  <!-- Cybernetic Grid Overlay -->
+  <rect width="1200" height="420" fill="url(#cyberGrid)" rx="16" />
+
+  <!-- Vector Sharding Data Flow Lines (Dynamic Background Topology) -->
+  <g stroke-linecap="round" opacity="0.65">
+    <!-- Connecting Shard Network Paths -->
+    <path d="M 80,70 Q 220,120 380,80 T 680,100 T 980,60 T 1120,100" fill="none" stroke="url(#neonCyan)" stroke-width="1.8" class="flow-path" />
+    <path d="M 60,340 Q 240,290 440,320 T 780,310 T 1060,350" fill="none" stroke="url(#neonPurple)" stroke-width="1.8" class="flow-path-reverse" />
+    <path d="M 120,180 C 260,310 400,60 560,190 S 860,330 1080,210" fill="none" stroke="url(#neonEmerald)" stroke-width="1.5" class="flow-path" />
+    <path d="M 220,380 L 380,80" fill="none" stroke="#334155" stroke-dasharray="4,6" stroke-width="1" />
+    <path d="M 980,60 L 860,340" fill="none" stroke="#334155" stroke-dasharray="4,6" stroke-width="1" />
+    <path d="M 600,40 L 600,100" fill="none" stroke="#38bdf8" stroke-dasharray="3,3" stroke-width="1" />
+  </g>
+
+  <!-- Interactive/Floating Distributed Shard Nodes (Left Cluster) -->
+  <g class="float-node-1" transform="translate(110, 110)">
+    <circle cx="0" cy="0" r="24" fill="#0f172a" stroke="#06b6d4" stroke-width="2" />
+    <circle cx="0" cy="0" r="12" fill="url(#neonCyan)" class="beacon-dot" />
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#06b6d4" stroke-width="1" class="pulse-ring" />
+    <text x="32" y="5" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1">SHARD_01 [R/W]</text>
+  </g>
+
+  <g class="float-node-2" transform="translate(130, 310)">
+    <rect x="-18" y="-18" width="36" height="36" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="2" />
+    <circle cx="0" cy="0" r="8" fill="url(#neonPurple)" class="beacon-dot" />
+    <text x="28" y="5" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1">RAFT_QUORUM</text>
+  </g>
+
+  <!-- Floating Distributed Shard Nodes (Right Cluster) -->
+  <g class="float-node-3" transform="translate(1060, 100)">
+    <polygon points="0,-22 19,11 -19,11" fill="#0f172a" stroke="#10b981" stroke-width="2" />
+    <circle cx="0" cy="0" r="6" fill="#10b981" class="beacon-dot" />
+    <text x="-120" y="4" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1">ANN_REPLICA</text>
+  </g>
+
+  <g class="float-node-1" transform="translate(1040, 320)">
+    <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#ec4899" stroke-width="2" />
+    <circle cx="0" cy="0" r="10" fill="url(#neonPurple)" class="beacon-dot" />
+    <text x="-135" y="5" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" letter-spacing="1">SHARD_0N [HNSW]</text>
+  </g>
+
+  <!-- Central Glassmorphism Card for Crystal Clear Foreground Readability -->
+  <g transform="translate(200, 48)">
+    <!-- Backdrop Blur Container with Border Glow -->
+    <rect x="0" y="0" width="800" height="324" rx="20" fill="#0b1120" fill-opacity="0.88" stroke="#334155" stroke-width="1.2" />
+    
+    <!-- Top Decorative Gradient Border Strip -->
+    <rect x="1" y="1" width="798" height="4" rx="2" fill="url(#neonCyan)" />
+
+    <!-- Badges Row Top -->
+    <g transform="translate(40, 36)">
+      <!-- Pill 1: Ecosystem Status -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="138" height="26" rx="13" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+        <circle cx="13" cy="13" r="4" fill="#38bdf8" class="beacon-dot" />
+        <text x="25" y="17" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">CURATED AWESOME</text>
+      </g>
+      <!-- Pill 2: Real-Time Engine -->
+      <g transform="translate(148, 0)">
+        <rect x="0" y="0" width="168" height="26" rx="13" fill="#1e293b" stroke="#818cf8" stroke-width="1" />
+        <text x="14" y="17" fill="#c7d2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">⚡ REAL-TIME LATENCY</text>
+      </g>
+      <!-- Pill 3: Distributed Partitioning -->
+      <g transform="translate(326, 0)">
+        <rect x="0" y="0" width="176" height="26" rx="13" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+        <text x="14" y="17" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">🌐 DYNAMIC SHARDING</text>
+      </g>
+      <!-- Pill 4: Billions of Vectors -->
+      <g transform="translate(512, 0)">
+        <rect x="0" y="0" width="190" height="26" rx="13" fill="#1e293b" stroke="#f472b6" stroke-width="1" />
+        <text x="14" y="17" fill="#fbcfe8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">🚀 BILLION-SCALE RAG</text>
+      </g>
+    </g>
+
+    <!-- Main Title (Guaranteed Foreground Visibility) -->
+    <text x="400" y="132" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.8">
+      Real-Time Vector Database Sharding
+    </text>
+
+    <!-- Gradient Accent Subheader Line -->
+    <text x="400" y="172" text-anchor="middle" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" letter-spacing="0.2">
+      Distributed Vector Engines • Dynamic Partitioning • High-Throughput Semantic Search
+    </text>
+
+    <!-- Descriptive Paragraph / Value Proposition -->
+    <text x="400" y="214" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400">
+      Production-proven SaaS &amp; Open-Source architectures scaling billion-vector ANN workloads
+    </text>
+    <text x="400" y="238" text-anchor="middle" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">
+      Raft Consensus • HNSW Partitioning • Sub-millisecond Hybrid Retrieval • Serverless Elasticity
+    </text>
+
+    <!-- Bottom Metrics & Tech Badges Bar -->
+    <g transform="translate(60, 268)">
+      <rect x="0" y="0" width="680" height="38" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      
+      <text x="85" y="24" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
+        ⭐ Top Open-Source
+      </text>
+      <line x1="170" y1="8" x2="170" y2="30" stroke="#334155" stroke-width="1" />
+      
+      <text x="255" y="24" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
+        ☁️ Managed Cloud SaaS
+      </text>
+      <line x1="340" y1="8" x2="340" y2="30" stroke="#334155" stroke-width="1" />
+      
+      <text x="425" y="24" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
+        ⚖️ Pricing &amp; Quotas
+      </text>
+      <line x1="510" y1="8" x2="510" y2="30" stroke="#334155" stroke-width="1" />
+      
+      <text x="595" y="24" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
+        🔄 Shard Rebalancing
+      </text>
+    </g>
+  </g>
+</svg>
